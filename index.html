@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>247 Lyric Jukebox</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: #02030a;
+      color: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    header, footer {
+      padding: 0.5rem 0.75rem;
+      background: #0b0f1f;
+      border-bottom: 1px solid #222844;
+    }
+    footer { border-top: 1px solid #222844; border-bottom: none; margin-top: auto; }
+    iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+    }
+    .controls {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    button, select {
+      background: #202642;
+      color: #f5f5f5;
+      border: 1px solid #363f66;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    button:hover { background: #313a63; }
+  </style>
+</head>
+
+<body>
+<header>
+  <div class="controls">
+    <button id="prevBtn">Prev</button>
+    <button id="nextBtn">Next</button>
+    <select id="songSelect"></select>
+    <span id="status" style="font-size:0.75rem; opacity:0.8;"></span>
+  </div>
+</header>
+
+<iframe id="songFrame" src=""></iframe>
+
+<footer>
+  <div style="font-size:0.7rem; opacity:0.8;">
+    24-7 Entertainment Studios • Lyric Jukebox Prototype
+  </div>
+</footer>
+
+<script>
+  const songs = [
+    { id: "rise-above", title: "Rise Above the Blue", file: "songs/rise-above.html" },
+    { id: "shattered-illusions", title: "Shattered Illusions", file: "songs/shattered-illusions.html" }
+  ];
+
+  const songFrame = document.getElementById("songFrame");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const songSelect = document.getElementById("songSelect");
+  const statusEl = document.getElementById("status");
+
+  let currentIndex = 0;
+
+  function loadSong(index) {
+    if (index < 0) index = songs.length - 1;
+    if (index >= songs.length) index = 0;
+
+    currentIndex = index;
+    const s = songs[currentIndex];
+
+    songFrame.src = s.file;
+    songSelect.value = s.id;
+    statusEl.textContent = `Now Playing: ${s.title}`;
+  }
+
+  songs.forEach(s => {
+    const opt = document.createElement("option");
+    opt.value = s.id;
+    opt.textContent = s.title;
+    songSelect.appendChild(opt);
+  });
+
+  prevBtn.addEventListener("click", () => loadSong(currentIndex - 1));
+  nextBtn.addEventListener("click", () => loadSong(currentIndex + 1));
+  songSelect.addEventListener("change", () => {
+    const idx = songs.findIndex(s => s.id === songSelect.value);
+    loadSong(idx);
+  });
+
+  loadSong(0);
+</script>
+</body>
+</html>
