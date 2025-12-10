@@ -1,0 +1,19 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Node / tooling
+node_modules/
+dist/
+build/
+.cache/
+.netlify/
+
+# Audio & media (keep repo light — you add manually as needed)
+*.wav
+*.mp3
+*.ogg
+*.flac
+
+# VS Code settings (optional)
+.vscode/
