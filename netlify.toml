@@ -1,0 +1,9 @@
+[build]
+  publish = "./"
+  command = ""
+
+# Support clean client-side routing, if needed
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
