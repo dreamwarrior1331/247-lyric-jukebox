@@ -1,0 +1,20 @@
+[
+  {
+    "id": "rise-above",
+    "title": "Rise Above the Blue",
+    "artist": "Joel Peter Bales",
+    "album": "Mint Condition Sessions",
+    "year": "2025",
+    "audio": "assets/audio/rise-above.mp3",
+    "background": "assets/img/rise-above.jpg"
+  },
+  {
+    "id": "shattered-illusions",
+    "title": "Shattered Illusions",
+    "artist": "Joel Peter Bales",
+    "album": "Shattered Illusions – Broadway Cut",
+    "year": "2025",
+    "audio": "assets/audio/shattered.mp3",
+    "background": "assets/img/shattered.jpg"
+  }
+]
